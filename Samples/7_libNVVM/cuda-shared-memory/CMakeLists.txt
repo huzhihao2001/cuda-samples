@@ -39,5 +39,13 @@ set_tests_properties(test-cuda-shared-memory-shared_memory
                      test-cuda-shared-memory-extern_shared_memory
                      PROPERTIES FIXTURES_REQUIRED PTXGENTEST)
 
+# Install the .ll files to the install/ folder
+install(FILES shared_memory.ll DESTINATION bin/cuda-shared-memory)
+install(FILES extern_shared_memory.ll DESTINATION bin/cuda-shared-memory)
+
 file(COPY shared_memory.ll DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 file(COPY extern_shared_memory.ll DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+
+# Copy the .ll files to the folder of executable file for full testing
+file(COPY shared_memory.ll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../ptxgen/cuda-shared-memory)
+file(COPY extern_shared_memory.ll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../ptxgen/cuda-shared-memory)

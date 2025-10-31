@@ -49,6 +49,7 @@ else (WIN32)
 endif (WIN32)
 
 install(TARGETS ptxgen DESTINATION bin)
+install(FILES test.ll DESTINATION bin)
 
 add_custom_command(
     TARGET ptxgen

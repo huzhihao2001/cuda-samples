@@ -36,5 +36,12 @@ add_test(NAME test-syscalls-vprintf
 set_tests_properties(test-syscalls-vprintf test-syscalls-malloc-free
                      PROPERTIES FIXTURES_REQUIRED PTXGENTEST)
 
+install(FILES malloc-free.ll DESTINATION bin/syscalls)
+install(FILES vprintf.ll DESTINATION bin/syscalls)
+
 file(COPY malloc-free.ll DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
 file(COPY vprintf.ll DESTINATION "${CMAKE_CURRENT_BINARY_DIR}")
+
+# Copy the .ll files to the folder of executable file for full testing
+file(COPY malloc-free.ll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../ptxgen/syscalls)
+file(COPY vprintf.ll DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/../ptxgen/syscalls)
