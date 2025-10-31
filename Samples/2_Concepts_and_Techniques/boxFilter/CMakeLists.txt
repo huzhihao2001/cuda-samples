@@ -58,23 +58,9 @@ if(${OpenGL_FOUND})
 
         # Copy data files to output directory
         add_custom_command(TARGET boxFilter POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_CURRENT_SOURCE_DIR}/data/teapot1024.ppm
-            ${CMAKE_CURRENT_BINARY_DIR}/
-        )
-
-        # Copy data files to output directory
-        add_custom_command(TARGET boxFilter POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_CURRENT_SOURCE_DIR}/data/ref_14.ppm
-            ${CMAKE_CURRENT_BINARY_DIR}/
-        )
-
-        # Copy data files to output directory
-        add_custom_command(TARGET boxFilter POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_CURRENT_SOURCE_DIR}/data/ref_22.ppm
-            ${CMAKE_CURRENT_BINARY_DIR}/
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_SOURCE_DIR}/data
+            ${CMAKE_CURRENT_BINARY_DIR}/data
         )
 
         if(WIN32)
