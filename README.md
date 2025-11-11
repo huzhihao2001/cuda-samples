@@ -195,6 +195,72 @@ To build samples with new CUDA Toolkit(CUDA 13.0 or later) and UMD(Version 580 o
 cmake -DCMAKE_PREFIX_PATH=/usr/local/cuda/lib64/stubs/ ..
 ```
 
+## Install Samples
+
+### Installation Path Structure
+
+The installation system automatically organizes samples into a structured directory layout based on:
+- **Target Architecture**: ${CMAKE_SYSTEM_PROCESSOR}, e.g. `x64`, `aarch64`, `amd64`, etc.
+- **Target OS**: `linux`, `windows`, `darwin`, `qnx`
+- **Build Type**: `release`, `debug`, etc.
+
+The default installation path is: `build/bin/${TARGET_ARCH}/${TARGET_OS}/${BUILD_TYPE}`
+
+**Examples:**
+- Linux x86_64 Release: `build/bin/x64/linux/release`
+- Linux aarch64 Release: `build/bin/aarch64/linux/release`
+- Windows amd64 Release: `build/bin/amd64/windows/release`
+
+### Customizing Installation Paths
+
+You can customize the installation location using CMake variables during the configuration step:
+
+- `CMAKE_INSTALL_PREFIX`: Changes the root installation directory (default: `build/bin`)
+  ```
+  cmake -DCMAKE_INSTALL_PREFIX=/custom/path ..
+  ```
+  This will install to: `/custom/path/${TARGET_ARCH}/${TARGET_OS}/${BUILD_TYPE}`
+
+- `CUDA_SAMPLES_INSTALL_DIR`: Specifies the exact final installation directory (overrides the structured path)
+  ```
+  cmake -DCUDA_SAMPLES_INSTALL_DIR=/exact/install/path ..
+  ```
+
+### Install Samples on Linux
+
+**Prerequisites:** You must first configure the project with CMake as described in the [Building CUDA Samples - Linux](#linux) or [Building]section.
+
+After configuring and building, install the samples:
+
+```
+cd build/
+make install
+```
+
+### Install Samples on Windows
+
+**Prerequisites:** You must first configure the project with CMake as described in the [Building CUDA Samples - Windows](#windows) section.
+
+#### Using Command Line
+
+After configuring with CMake, build and install from the `x64 Native Tools Command Prompt for VS`:
+
+```cmd
+cd build
+cmake --build . --config Release
+cmake --install . --config Release
+```
+
+**Note:** Replace `Release` with `Debug` if you want to install debug builds. For multi-configuration generators (like Visual Studio), the `--config` flag determines which build type to install.
+
+#### Using Visual Studio IDE
+
+Alternatively, open the generated solution file `CUDA_Samples.sln` in Visual Studio:
+1. Select the desired configuration (`Release` or `Debug`)
+2. Build the solution (F7 or Build > Build Solution)
+3. Right-click on the `INSTALL` target under `CMakePredefinedTargets` in Solution Explorer
+4. Select "Build"
+
 ## Running All Samples as Tests
 
 It's important to note that the CUDA samples are _not_ intended as a validation suite for CUDA. They do not cover corner cases, they do not completely cover the
