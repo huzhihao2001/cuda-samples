@@ -17,25 +17,25 @@
             },
             {
                 "args": [
-                    "../cuda-shared-memory/shared_memory.ll"
+                    "cuda-shared-memory/shared_memory.ll"
                 ],
                 "description": "cuda-shared-memory shared_memory test"
             },
             {
                 "args": [
-                    "../cuda-shared-memory/extern_shared_memory.ll"
+                    "cuda-shared-memory/extern_shared_memory.ll"
                 ],
                 "description": "cuda-shared-memory extern_shared_memory test"
             },
             {
                 "args": [
-                    "../syscalls/malloc-free.ll"
+                    "syscalls/malloc-free.ll"
                 ],
                 "description": "syscalls malloc-free test"
             },
             {
                 "args": [
-                    "../syscalls/vprintf.ll"
+                    "syscalls/vprintf.ll"
                 ],
                 "description": "syscalls vprintf test"
             }

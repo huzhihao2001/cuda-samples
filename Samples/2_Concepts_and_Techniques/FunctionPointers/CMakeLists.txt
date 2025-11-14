@@ -60,7 +60,7 @@ if(${OpenGL_FOUND})
         add_custom_command(TARGET FunctionPointers POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_CURRENT_SOURCE_DIR}/data
-            ${CMAKE_CURRENT_BINARY_DIR}
+            ${CMAKE_CURRENT_BINARY_DIR}/data
         )
 
         if(WIN32)
@@ -90,3 +90,7 @@ if(${OpenGL_FOUND})
 else()
     message(STATUS "OpenGL not found - will not build sample 'FunctionPointers'")
 endif()
+
+# Include installation configuration
+include(${CMAKE_CURRENT_SOURCE_DIR}/../../../cmake/InstallSamples.cmake)
+setup_samples_install()
