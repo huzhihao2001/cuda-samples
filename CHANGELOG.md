@@ -1,5 +1,8 @@
 ## Changelog
 
+### CUDA 13.1
+* Minor bug fixes and enhancements, no structural or functional changes
+
 ### CUDA 13.0
 * Updated the samples using the cudaDeviceProp fields which are deprecated and removed in CUDA 13.0, replacing the fields with the equivalents in "cudaDeviceGetAttribute":
     * Deprecated "cudaDeviceProp" fields

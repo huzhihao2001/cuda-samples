@@ -142,8 +142,8 @@ $ cmake .. -DBUILD_TEGRA=True \
   -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
   -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchains/toolchain-aarch64-linux.cmake \
   -DTARGET_FS=/drive/temp \
-  -DCMAKE_LIBRARY_PATH=/drive/temp/usr/local/cuda-13.0/thor/lib64/ \
-  -DCMAKE_INCLUDE_PATH=/drive/temp/usr/local/cuda-13.0/thor/include/
+  -DCMAKE_LIBRARY_PATH=/drive/temp/usr/local/cuda-13.1/thor/lib64/ \
+  -DCMAKE_INCLUDE_PATH=/drive/temp/usr/local/cuda-13.1/thor/include/
 ```
 
 Please note that the following libraries are not pre-installed in the DriveOS dev-nsr target filesystem:
